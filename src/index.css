@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  background-color: #020617;
+  color: #FFFFFF;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: #F59E0B;
+  color: #020617;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #B97D0E;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F59E0B;
+}
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/[0.04] backdrop-blur-xl border border-white/10;
+  }
+
+  .glass-strong {
+    @apply bg-secondary/60 backdrop-blur-2xl border border-white/10;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-primary;
+  }
+
+  .section-heading {
+    @apply font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-primary px-7 py-3.5 font-display font-medium text-secondary transition-all duration-300 hover:shadow-glow hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.03] px-7 py-3.5 font-display font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-primary/60 hover:bg-primary/[0.08] hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-base;
+  }
+}
+
+/* Custom focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #F59E0B;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
